@@ -13,6 +13,8 @@
 		EEF007CB2649E93100ECE0AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF007B62649E93000ECE0AC /* ContentView.swift */; };
 		EEF007CC2649E93100ECE0AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF007B72649E93100ECE0AC /* Assets.xcassets */; };
 		EEF007CD2649E93100ECE0AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEF007B72649E93100ECE0AC /* Assets.xcassets */; };
+		EEF007D72649EF9B00ECE0AC /* Conway.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF007D62649EF9B00ECE0AC /* Conway.swift */; };
+		EEF007D82649EF9B00ECE0AC /* Conway.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF007D62649EF9B00ECE0AC /* Conway.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		EEF007C42649E93100ECE0AC /* Conway.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Conway.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF007C62649E93100ECE0AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EEF007C72649E93100ECE0AC /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		EEF007D62649EF9B00ECE0AC /* Conway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conway.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,7 @@
 			children = (
 				EEF007B52649E93000ECE0AC /* ConwayApp.swift */,
 				EEF007B62649E93000ECE0AC /* ContentView.swift */,
+				EEF007D62649EF9B00ECE0AC /* Conway.swift */,
 				EEF007B72649E93100ECE0AC /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -189,6 +193,7 @@
 			files = (
 				EEF007CA2649E93100ECE0AC /* ContentView.swift in Sources */,
 				EEF007C82649E93100ECE0AC /* ConwayApp.swift in Sources */,
+				EEF007D72649EF9B00ECE0AC /* Conway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +203,7 @@
 			files = (
 				EEF007CB2649E93100ECE0AC /* ContentView.swift in Sources */,
 				EEF007C92649E93100ECE0AC /* ConwayApp.swift in Sources */,
+				EEF007D82649EF9B00ECE0AC /* Conway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
