@@ -40,13 +40,33 @@ struct Conway {
   }
   
   mutating func nextGeneration() {
-    for _ in 0..<size {
-      self[(0..<size).randomElement()!, (0..<size).randomElement()!] = Bool.random()
+    let original = grid
+    
+    for r in 0..<size {
+      for c in 0..<size {
+        let cell = original[r * size + c]
+        guard cell != 0 else { continue }
+        
+        switch (cell >> 1) {
+        case 3: self[r, c] = true  // lives
+        case 2: break              // doesn't change
+        case _: self[r, c] = false // dies
+        }
+      }
     }
   }
   
   init(size: Int) {
     self.size = size
     self.grid = Array(repeating: 0, count: size * size)
+    
+    // random start
+    for r in 0..<size {
+      for c in 0..<size {
+        if Bool.random() {
+          self[r, c] = true
+        }
+      }
+    }
   }
 }
