@@ -38,16 +38,23 @@ struct ContentView: View {
 
   var body: some View {
     VStack {
-      ConwayCanvas(conway: conway)
-        .fill(Color.blue)
-        .aspectRatio(1, contentMode: .fit)
-        .background(Color.white)
-        .onReceive(timer) { _ in
-          if autoPlay {
-            conway.nextGeneration()
-          }
+      GeometryReader { geometry in
+        ConwayCanvas(conway: conway)
+          .fill(Color.blue)
+          .background(Color.white)
+          .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local).onEnded { value in
+            let r = Int(value.location.y / geometry.frame(in: .local).height * CGFloat(conway.size))
+            let c = Int(value.location.x / geometry.frame(in: .local).width * CGFloat(conway.size))
+            conway[r, c].toggle()
+          })
+      }
+      .aspectRatio(1, contentMode: .fit)
+      .onReceive(timer) { _ in
+        if autoPlay {
+          conway.nextGeneration()
         }
-      
+      }
+
       HStack {
         Toggle("Autoplay", isOn: $autoPlay)
         Button("Next") { conway.nextGeneration() }
