@@ -33,7 +33,7 @@ struct ConwayCanvas: Shape {
 
 struct ContentView: View {
   @State var conway = Conway(size: 96)
-  @State var autoPlay = true
+  @State var autoPlay = false
   let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 
   var body: some View {
@@ -58,6 +58,8 @@ struct ContentView: View {
       HStack {
         Toggle("Autoplay", isOn: $autoPlay)
         Button("Next") { conway.nextGeneration() }
+        Button("Clear") { conway.clear() }
+        Button("Randomize") { conway.randomize() }
       }
       .padding(10)
     }

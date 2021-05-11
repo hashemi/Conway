@@ -56,11 +56,11 @@ struct Conway {
     }
   }
   
-  init(size: Int) {
-    self.size = size
-    self.grid = Array(repeating: 0, count: size * size)
-    
-    // random start
+  mutating func clear() {
+    self.grid.resetBytes(in: 0..<(size*size))
+  }
+  
+  mutating func randomize() {
     for r in 0..<size {
       for c in 0..<size {
         if Bool.random() {
@@ -68,5 +68,10 @@ struct Conway {
         }
       }
     }
+  }
+  
+  init(size: Int) {
+    self.size = size
+    self.grid = Array(repeating: 0, count: size * size)
   }
 }
