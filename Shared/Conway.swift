@@ -6,12 +6,18 @@
 //
 
 struct Conway {
-  private var grid: [Bool]
+  private var grid: [UInt8]
   let size: Int
   
   subscript(row: Int, col: Int) -> Bool {
-    get { grid[row * size + col] }
-    set { grid[row * size + col] = newValue }
+    get { grid[row * size + col] & 1 == 1 }
+    set {
+      if newValue {
+        grid[row * size + col] |= 1
+      } else {
+        grid[row * size + col] &= ~1
+      }
+    }
   }
   
   mutating func nextGeneration() {
@@ -22,6 +28,6 @@ struct Conway {
   
   init(size: Int) {
     self.size = size
-    self.grid = Array(repeating: false, count: size * size)
+    self.grid = Array(repeating: 0, count: size * size)
   }
 }
