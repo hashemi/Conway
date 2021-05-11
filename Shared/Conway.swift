@@ -12,10 +12,29 @@ struct Conway {
   subscript(row: Int, col: Int) -> Bool {
     get { grid[row * size + col] & 1 == 1 }
     set {
+      func updateNeighbours(row: Int, col: Int, action: (inout UInt8) -> ()) {
+        func wrap(_ i: Int) -> Int { (i + size) % size }
+        
+        action(&grid[wrap(row - 1) * size + wrap(col - 1)])
+        action(&grid[wrap(row - 1) * size + col])
+        action(&grid[wrap(row - 1) * size + wrap(col + 1)])
+
+        action(&grid[row * size + wrap(col - 1)])
+        action(&grid[row * size + wrap(col + 1)])
+
+        action(&grid[wrap(row + 1) * size + wrap(col - 1)])
+        action(&grid[wrap(row + 1) * size + col])
+        action(&grid[wrap(row + 1) * size + wrap(col + 1)])
+      }
+      
+      guard newValue != self[row, col] else { return }
+      
       if newValue {
         grid[row * size + col] |= 1
+        updateNeighbours(row: row, col: col) { $0 += 0b10 }
       } else {
         grid[row * size + col] &= ~1
+        updateNeighbours(row: row, col: col) { $0 -= 0b10 }
       }
     }
   }
