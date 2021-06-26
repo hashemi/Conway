@@ -18,9 +18,10 @@ struct Conway {
     
     var isBlank: Bool { data == 0 }
 
-    var neighbours: UInt8 { data >> 1 }
-    mutating func increment() { data += 0b10 }
-    mutating func decrement() { data -= 0b10 }
+    var neighbours: UInt8 {
+      get { data >> 1 }
+      set { data = data & 1 | newValue << 1 }
+    }
     
     mutating func clear() { data = 0 }
   }
@@ -50,10 +51,10 @@ struct Conway {
       
       if newValue {
         grid[row * size + col].alive = true
-        updateNeighbours(row: row, col: col) { $0.increment() }
+        updateNeighbours(row: row, col: col) { $0.neighbours += 1 }
       } else {
         grid[row * size + col].alive = false
-        updateNeighbours(row: row, col: col) { $0.decrement() }
+        updateNeighbours(row: row, col: col) { $0.neighbours -= 1 }
       }
     }
   }
