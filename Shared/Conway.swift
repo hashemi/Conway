@@ -83,9 +83,7 @@ struct Conway {
   mutating func randomize() {
     for r in 0..<size {
       for c in 0..<size {
-        if Bool.random() {
-          self[r, c] = true
-        }
+        self[r, c] = Bool.random()
       }
     }
   }
